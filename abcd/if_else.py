@@ -136,3 +136,5 @@ elif(x<=300 and x>100):
 else:
     y = x*5
     print("electric charge =",y)
+
+
