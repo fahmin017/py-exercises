@@ -66,13 +66,44 @@
 # name = "hello"
 # print(name[1:5])     #slicing
 
-name = "abhinand"
-print(name.upper())
+# name = "abhinand"
+# print(name.upper())
 
-name1 = "ABHINAND"
-print(name1.lower())
+# name1 = "ABHINAND"
+# print(name1.lower())
 
-subject = 'python'
-print(subject.capitalize())
+# subject = 'python'
+# print(subject.capitalize())
 
-print(subject.isdigit())
+# print(subject.isdigit())
+
+list1 = ["messi","rono","neymar","hazard"]
+print(list1)
+
+list1[3]="kevin"
+print(list1)
+
+list1[1:3]="yamal","coco","cryff"
+print(list1)
+
+list1.insert(5,"rono")
+print(list1)
+
+list1.append("marcelo")
+print(list1)
+
+list2 = ["pedri","gavi","cubarsi"]
+list1.extend(list2)
+print(list1)
+
+list1.remove("coco")
+print(list1)
+
+for i in range(len(list1)):
+    print(list1[i])
+
+list1.sort()
+print(list1)
+
+list1.sort(reverse=True)    # descending oder
+print(list1)
