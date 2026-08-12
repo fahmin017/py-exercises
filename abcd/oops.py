@@ -445,21 +445,163 @@
 # We want to add the __init__() function to the child class (instead of the pass keyword).
 
 
-class person:
-    def __init__(self,fname,lname):
-        self.fname=fname
-        self.lname=lname
+# class person:
+#     def __init__(self,fname,lname):
+#         self.fname=fname
+#         self.lname=lname
 
-    def print_name(self):
-        print(self.fname,self.lname)
+#     def print_name(self):
+#         print(self.fname,self.lname)
 
 
-class student(person):
-    def __init__(self, fname, lname,year):
-        super().__init__(fname, lname)
-        self.graduation_year =year
+# class student(person):
+#     def __init__(self, fname, lname,year):
+#         super().__init__(fname, lname)
+#         self.graduation_year =year
 
-s1=student("muhammed","fahmin",2022)
+# s1=student("muhammed","fahmin",2022)
 
-print(s1.graduation_year)
+# print(s1.graduation_year)
 
+
+#********************************************************************************************************************************
+
+
+                                            # Python Encapsulation
+                                        #_____________________________#
+
+# Encapsulation is about protecting data inside a class.
+
+# It means keeping data (properties) and methods together in a class, while controlling how the data can be accessed from outside the class.
+
+# This prevents accidental changes to your data and hides the internal details of how your class works.
+
+# Private Properties
+# In Python, you can make properties private by using a double underscore __ prefix:
+
+
+# class person:
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.__age=age
+
+# p1=person("fahmin",22)          
+# print(p1.name)
+# print(p1.__age)             # CAUSE ERROR
+
+
+
+
+
+# Private Properties
+# In Python, you can make properties private by using a double underscore __ prefix:
+
+
+# class person:
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.__age=age
+
+#     def get_age(self):
+#         return self.__age
+
+# p1=person("fahmin",22)          
+# print(p1.name)
+# print(p1.get_age())        
+
+
+
+# Set Private Property Value
+# To modify a private property, you can create a setter method.
+
+# The setter method can also validate the value before setting it:
+
+# class students():
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.__age=age
+
+#     def get_age(self):
+#         return self.__age
+
+#     def set_age(self,age):
+#         if age>0:
+#             self.__age=age
+#         else:
+#             print("add valid age")
+
+# s1=students("finu",22)
+# print(s1.get_age())
+
+# s1.set_age(19)
+# print(s1.get_age())
+
+
+
+
+
+
+# class student():
+#     def __init__(self,name):
+#         self.name=name
+#         self.__grade=0
+
+#     def set_grade(self,grade):
+#         if 0<= grade <=100:
+#             self.__grade=grade
+#         else:
+#             print("btw 0 and 100")
+
+#     def get_grade(self):
+#         return self.__grade
+
+#     def get_status(self):
+#         if self.__grade>=60:
+#             print("passed")
+
+#         else:
+#             print("failed")
+
+# s1=student("fahmin")
+# s1.set_grade(89)
+
+# print("grade : ",s1.get_grade())
+# print(s1.get_status())
+
+
+
+
+# Python Inner Classes
+# An inner class is a class defined inside another class. The inner class can access the properties and methods of the outer class.
+
+# Inner classes are useful for grouping classes that are only used in one place, making your code more organized.
+
+class Cars:
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+        self.engine = self.Engine()
+
+    class Engine:
+        def __init__(self):
+            self.status = "off"
+
+        def start(self):
+            self.status = "running"
+            print("engine started")
+
+        def stop(self):
+            self.status = "off"
+            print("engine stopped")
+
+    def drive(self):
+        if self.engine.status == "running":
+            print(f"driving the {self.brand} {self.model}")
+            
+        else:
+            print("start the engine")
+
+car = Cars("Toyota", "Corolla")
+car.drive()
+car.engine.start()
+car.drive()
